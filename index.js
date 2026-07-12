@@ -17,15 +17,16 @@ function getHumanChoice() {
   return humanChoice;
 }
 
-
+function playGame(){
+  
 let humanScore = 0;
-let computerScore = 0;
+let computerScore = 0;  
 
 function playRound(hChoice, cChoice) {
   // makeing the humanchoice case -insensetive.
   hChoice = hChoice.toLowerCase();
-console.log("human: ", hChoice);
-console.log("computer: ", cChoice);
+console.log("You: ", hChoice);
+console.log("Computer: ", cChoice);
 
   if ((hChoice === "rock" && cChoice === "scissor") || (hChoice === "paper" && cChoice === "rock") || (hChoice === "scissor" && cChoice === "paper")) {
     console.log(`"You Won! ${hChoice} beats ${cChoice}".`);
@@ -33,19 +34,30 @@ console.log("computer: ", cChoice);
   } else if (hChoice === cChoice) {
     console.log("It's a draw!");
   }
-  else {
+  else if((cChoice === "rock" && hChoice === "scissor") || (cChoice === "paper" && hChoice === "rock") || (cChoice === "scissor" && hChoice === "paper")){
     console.log(`"You lose! ${cChoice} beats ${hChoice}".`)
     computerScore++;
   }
 
 }
 
-const humanSelection = getHumanChoice();
+for(let i = 0; i <5; i++){
+  const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
-
 playRound(humanSelection, computerSelection);
+}
+
 //logging score after calling function to see the updated score.
-console.log("Human Score: ", humanScore);
+console.log("Your Score: ", humanScore);
 console.log("Computer Score:", computerScore);
 
+if(humanScore > computerScore){
+  console.log("You won the game.")
+}else if(humanScore < computerScore){
+  console.log("Computer won the game.")
+} else{
+  console.log("It's a tie.")
+}
 
+}
+playGame()
