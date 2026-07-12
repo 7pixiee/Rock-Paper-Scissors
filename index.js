@@ -13,51 +13,49 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-  let humanChoice = prompt("Enter your choice: ");
+  let humanChoice = prompt("Enter your choice: Rock, Paper or Scissor");
   return humanChoice;
 }
 
-function playGame(){
-  
-let humanScore = 0;
-let computerScore = 0;  
+function playGame() {
+  alert("Let's play a game!");
+  let humanScore = 0;
+  let computerScore = 0;
 
-function playRound(hChoice, cChoice) {
-  // makeing the humanchoice case -insensetive.
-  hChoice = hChoice.toLowerCase();
-console.log("You: ", hChoice);
-console.log("Computer: ", cChoice);
+  function playRound(hChoice, cChoice) {
+    // Make the human choice case-insensetive.
+    hChoice = hChoice.toLowerCase();
 
-  if ((hChoice === "rock" && cChoice === "scissor") || (hChoice === "paper" && cChoice === "rock") || (hChoice === "scissor" && cChoice === "paper")) {
-    console.log(`"You Won! ${hChoice} beats ${cChoice}".`);
-    humanScore++;
-  } else if (hChoice === cChoice) {
-    console.log("It's a draw!");
+    if ((hChoice === "rock" && cChoice === "scissor") || (hChoice === "paper" && cChoice === "rock") || (hChoice === "scissor" && cChoice === "paper")) {
+
+      alert(`You: ${hChoice}  |  Computer: ${cChoice}\nYou won! ${hChoice} beats ${cChoice}.`);
+      humanScore++;
+    } else if (hChoice === cChoice) {
+      alert(`You: ${hChoice}  |  Computer: ${cChoice}\nIt's a draw!`);
+    }
+    else if ((cChoice === "rock" && hChoice === "scissor") || (cChoice === "paper" && hChoice === "rock") || (cChoice === "scissor" && hChoice === "paper")) {
+      alert(`You: ${hChoice}  |  Computer: ${cChoice}\nYou lose! ${cChoice} beats ${hChoice}.`);
+      computerScore++;
+    }
+
   }
-  else if((cChoice === "rock" && hChoice === "scissor") || (cChoice === "paper" && hChoice === "rock") || (cChoice === "scissor" && hChoice === "paper")){
-    console.log(`"You lose! ${cChoice} beats ${hChoice}".`)
-    computerScore++;
+
+  for (let i = 0; i < 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
   }
 
-}
+  //logging score after calling function to see the updated score.
 
-for(let i = 0; i <5; i++){
-  const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
-}
+  if (humanScore > computerScore) {
+    alert(`Your Score: ${humanScore}  |  Computer Score: ${computerScore}\nYou won the game.`);
+  } else if (humanScore < computerScore) {
+    alert(`Your Score: ${humanScore}  |  Computer Score: ${computerScore}\nComputer won the game.`);
+  } else {
+    alert(`Your Score: ${humanScore}  |  Computer Score: ${computerScore}\nIt's a tie.`);
 
-//logging score after calling function to see the updated score.
-console.log("Your Score: ", humanScore);
-console.log("Computer Score:", computerScore);
-
-if(humanScore > computerScore){
-  console.log("You won the game.")
-}else if(humanScore < computerScore){
-  console.log("Computer won the game.")
-} else{
-  console.log("It's a tie.")
-}
+  }
 
 }
 playGame()
