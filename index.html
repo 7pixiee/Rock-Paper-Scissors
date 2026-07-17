@@ -4,8 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <style>
+        * {
+            
+        }
+    body{
+        color: white;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+        
+    }
+    h1{
+        text-align: center;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 2.5rem;
+        margin-top: 100px;
+    }
+    #scores{
+        height: 30px;
+        width: 320px;
+        margin: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .score{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: auto;
+        border: 2px solid white;
+        border-radius: 7px;
+        padding: 7px;
+        font-size: 1.5rem;
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    #options{
+        margin: 50px;
+        width: 520px;
+        height: 120px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .btn{
+        height:100%;
+        width: 120px;
+        border-radius: 7px;
+    }
+    p{
+        margin: 20px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.3rem;
+    }
+    </style>
 </head>
 <body>
+    <h1>Rock Paper Scissors</h1>
+    <div id="scores">
+        <div class="player score">Player: </div>
+        <div class="Computer score">Computer: </div>
+    </div>
+    <div id="options">
+        <button class="btn rock"></button>
+        <button class="btn paper"></button>
+        <button class="btn scissors"></button>
+    </div>
+    <p>Choose your weapon!</p>
+    <p id="result"></p>
     <script src="index.js"></script>
 </body>
 </html>

@@ -17,12 +17,12 @@ function getHumanChoice() {
   return humanChoice;
 }
 
-function playGame() {
+//function playGame() {
   alert("Let's play a game!");
   let humanScore = 0;
   let computerScore = 0;
 
-  function playRound(hChoice, cChoice) {
+  //function playRound(hChoice, cChoice) {
     // Make the human choice case-insensetive.
     hChoice = hChoice.toLowerCase();
 
@@ -40,11 +40,11 @@ function playGame() {
 
   }
 
-  for (let i = 0; i < 5; i++) {
+  //for (let i = 0; i < 5; i++) {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
     playRound(humanSelection, computerSelection);
-  }
+  //}
 
   //logging score after calling function to see the updated score.
 
@@ -57,5 +57,5 @@ function playGame() {
 
   }
 
-}
-playGame()
+//}
+//playGame()
