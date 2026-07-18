@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <style>
-        * {
-            
-        }
     body{
         color: white;
         display: flex;
@@ -24,12 +21,12 @@
         text-align: center;
         font-family: 'Courier New', Courier, monospace;
         font-size: 2.5rem;
-        margin-top: 100px;
+        margin-top: 60px;
     }
     #scores{
         height: 30px;
         width: 320px;
-        margin: 30px;
+        margin: 20px;
         display: flex;
         justify-content: space-between;
     }
@@ -38,44 +35,105 @@
         align-items: center;
         height: 100%;
         width: auto;
-        border: 2px solid white;
+        border: 2px solid rgb(141, 250, 252);
         border-radius: 7px;
         padding: 7px;
         font-size: 1.5rem;
         font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
     #options{
-        margin: 50px;
+        margin-top: 50px;
+        margin-bottom: 20px;
         width: 520px;
-        height: 120px;
+        height: 130px;
         display: flex;
         justify-content: space-between;
+    }
+    .opt-rock, .opt-paper, .opt-scissors{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .option-name{
+        margin-top: 10px;
+        font-family: roboto, sans-serif;
+        font-size: 1.2rem;
     }
     .btn{
         height:100%;
         width: 120px;
         border-radius: 7px;
+        border: 2px solid rgb(141, 250, 252);
+        box-shadow: 0px 0px 15px rgb(204, 243, 255);
+    }
+    .btn:hover{
+        border: 2px solid rgb(239, 172, 246);
+        box-shadow: 0px 0px 15px rgb(250, 133, 236);
+        cursor: pointer;
+    }
+    .btn:active{
+        box-shadow: 0px 0px 15px rgb(250, 133, 236);
+        transform: scale(0.95);
+    }
+    .rock{
+        background-image: url('images/catpaw-rock.png');
+        background-size: cover;
+    }
+    .paper{
+        background-image: url('images/catpaw-paper.png');
+        background-size: cover;
+    }
+    .scissors{
+        background-image: url('images/catpaw-scissors.png');
+        background-size: cover;
+    }
+    #weapon-container {
+        text-align: center;
+         border: 2px solid rgb(141, 250, 252);
+         border-radius: 7px;
+         padding:30px;
+         margin: 30px;
+         
     }
     p{
-        margin: 20px;
+        margin-bottom: 7px;
         font-family: 'Courier New', Courier, monospace;
         font-size: 1.3rem;
+        font-weight: 600;
     }
+    .final-result {
+        color: rgb(140, 69, 124);
+    }
+    
     </style>
 </head>
 <body>
     <h1>Rock Paper Scissors</h1>
     <div id="scores">
-        <div class="player score">Player: </div>
-        <div class="Computer score">Computer: </div>
+        <div class="player score">Player:0</div>
+        <div class="Computer score">Computer:0</div>
     </div>
+    <div id="weapon-container">
+        <p>First to 5 points wins!</p>
     <div id="options">
+        <div class="opt-rock">
         <button class="btn rock"></button>
+        <span class="option-name">Rock</span>
+        </div>
+        <div class="opt-paper">
         <button class="btn paper"></button>
+        <span class="option-name">Paper</span>  
+        </div>
+        <div class="opt-scissors">
         <button class="btn scissors"></button>
+        <span class="option-name">Scissors</span>
+        </div>  
     </div>
     <p>Choose your weapon!</p>
+    </div>
     <p id="result"></p>
+    <p class="final-result"></p>
     <script src="index.js"></script>
 </body>
 </html>

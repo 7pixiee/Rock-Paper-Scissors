@@ -1,61 +1,67 @@
-function getComputerChoice() {
-  let compChoice = "";
-  //create a random no. from 1 to 3.
-  const num1to3 = Math.floor(Math.random() * 3) + 1;
-  if (num1to3 === 1) {
-    compChoice = "rock";
-  } else if (num1to3 === 2) {
-    compChoice = "paper";
-  } else if (num1to3 === 3) {
-    compChoice = "scissor";
-  }
-  return compChoice;
-}
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
 
-function getHumanChoice() {
-  let humanChoice = prompt("Enter your choice: Rock, Paper or Scissor");
-  return humanChoice;
-}
+const playerScore = document.querySelector(".player");
+const computerScore = document.querySelector(".Computer");
 
-//function playGame() {
-  alert("Let's play a game!");
+const result = document.querySelector("#result");
+const finalResult = document.querySelector('.final-result')
+
+
   let humanScore = 0;
-  let computerScore = 0;
+  let compScore = 0;
 
-  //function playRound(hChoice, cChoice) {
-    // Make the human choice case-insensetive.
-    hChoice = hChoice.toLowerCase();
+function getComputerChoice() {
+ const random = Math.floor(Math.random() * 3) + 1;
 
-    if ((hChoice === "rock" && cChoice === "scissor") || (hChoice === "paper" && cChoice === "rock") || (hChoice === "scissor" && cChoice === "paper")) {
+  if (random === 1) return "rock";
+  if (random === 2) return "paper";
+  return "scissors";
+}
 
-      alert(`You: ${hChoice}  |  Computer: ${cChoice}\nYou won! ${hChoice} beats ${cChoice}.`);
+  function playRound(hChoice, cChoice) {
+    if ((hChoice === "rock" && cChoice === "scissors") ||
+     (hChoice === "paper" && cChoice === "rock") ||
+      (hChoice === "scissors" && cChoice === "paper")) {
       humanScore++;
+      result.textContent = `You win! ${hChoice} beats ${cChoice}.`;
+      playerScore.textContent = `Player: ${humanScore}`;
     } else if (hChoice === cChoice) {
-      alert(`You: ${hChoice}  |  Computer: ${cChoice}\nIt's a draw!`);
+      result.textContent = `It's a draw!`;
     }
-    else if ((cChoice === "rock" && hChoice === "scissor") || (cChoice === "paper" && hChoice === "rock") || (cChoice === "scissor" && hChoice === "paper")) {
-      alert(`You: ${hChoice}  |  Computer: ${cChoice}\nYou lose! ${cChoice} beats ${hChoice}.`);
-      computerScore++;
+    else{
+      compScore++;
+       result.textContent = `You lose! ${cChoice} beats ${hChoice}.`;
+      computerScore.textContent = `Computer: ${compScore}`;
     }
 
+    if (humanScore === 5) {
+    finalResult.textContent = "🎉 You won the game!";
+    disableButtons();
+  } else if (compScore === 5) {
+    finalResult.textContent = "💻 Computer won the game!";
+    disableButtons();
+  }
   }
 
-  //for (let i = 0; i < 5; i++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-  //}
+  function disableButtons() {
+  rockBtn.disabled = true;
+  paperBtn.disabled = true;
+  scissorsBtn.disabled = true;
+  rockBtn.style.cursor = "not-allowed";
+    paperBtn.style.cursor = "not-allowed";
+    scissorsBtn.style.cursor = "not-allowed";
+}
+  
+rockBtn.addEventListener("click", () => {
+  playRound("rock", getComputerChoice());
+});
 
-  //logging score after calling function to see the updated score.
+paperBtn.addEventListener("click", () => {
+  playRound("paper", getComputerChoice());
+});
 
-  if (humanScore > computerScore) {
-    alert(`Your Score: ${humanScore}  |  Computer Score: ${computerScore}\nYou won the game.`);
-  } else if (humanScore < computerScore) {
-    alert(`Your Score: ${humanScore}  |  Computer Score: ${computerScore}\nComputer won the game.`);
-  } else {
-    alert(`Your Score: ${humanScore}  |  Computer Score: ${computerScore}\nIt's a tie.`);
-
-  }
-
-//}
-//playGame()
+scissorsBtn.addEventListener("click", () => {
+  playRound("scissors", getComputerChoice());
+});
